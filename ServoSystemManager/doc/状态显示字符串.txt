@@ -1,0 +1,32 @@
+state
+
+OFF			=	1,
+INIT			=	2,
+ON			=	3,
+
+curr_idºÍcurr_id
+
+IDLE			=	0,															
+AOA			=	1,															
+MIPA			=	2,															 
+MPSA			=	3,															 
+COLD			=	4,															 
+CCLD			=	5,															
+VCLD			=	6,															
+POSCLD			=	7,	
+
+user_mode
+
+IDLE_SEQ_WORK			=	0,													
+AOA_SEQ_WORK			=	1,													
+MIPA_SEQ_WORK			=	2,													
+MPSA_SEQ_WORK			=	3,													
+COLD_SEQ_WORK			=	4,													 
+CCLD_SEQ_WORK			=	5,													
+VCLD_SEQ_WORK			=	6,													
+OPEN_VCTL_SEQ_WORK		=	7,													
+CLOSED_VCTL_SEQ_WORK		=	8,														
+FIX_PCTL_SEQ_WORK		=	9,			   										
+TRA_PCTL_SEQ_WORK		=	10,	
+STOP_VCTL_SEQ_WORK		=	11												
+														

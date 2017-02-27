@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GTSD_FFT", "GTSD_FFT\GTSD_FFT.vcxproj", "{907C4AFD-039A-4812-8E71-C0FC3F66DCD2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GTSD_FFT_TEST", "GTSD_FFT_TEST\GTSD_FFT_TEST.vcxproj", "{B8A247AC-D814-4C67-A641-13A1F85832BC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ServoDriverComDll", "ServoDriverComDll\ServoDriverComDll.vcxproj", "{743704EC-78EE-483F-93B1-853E25E76892}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ServoDriverManagerDll", "ServoDriverManagerDll\ServoDriverManagerDll.vcxproj", "{040A9EB0-0698-4820-9FFA-8D4017D2EFD3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dllTest", "dllTest\dllTest.vcxproj", "{55AB20B3-1B5A-4CF4-9EF3-77BC7739B6F8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ServoDriverManagerApp", "ServoDriverManagerApp\ServoDriverManagerApp.vcxproj", "{D56CD35F-349D-40E8-9E04-393707696B67}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ServoDriverAlgorithmDll", "ServoDriverAlgorithmDll\ServoDriverAlgorithmDll.vcxproj", "{F7938A52-5756-4653-8D73-46423CA3FB2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{907C4AFD-039A-4812-8E71-C0FC3F66DCD2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{907C4AFD-039A-4812-8E71-C0FC3F66DCD2}.Debug|Win32.Build.0 = Debug|Win32
+		{907C4AFD-039A-4812-8E71-C0FC3F66DCD2}.Release|Win32.ActiveCfg = Release|Win32
+		{907C4AFD-039A-4812-8E71-C0FC3F66DCD2}.Release|Win32.Build.0 = Release|Win32
+		{B8A247AC-D814-4C67-A641-13A1F85832BC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B8A247AC-D814-4C67-A641-13A1F85832BC}.Debug|Win32.Build.0 = Debug|Win32
+		{B8A247AC-D814-4C67-A641-13A1F85832BC}.Release|Win32.ActiveCfg = Release|Win32
+		{B8A247AC-D814-4C67-A641-13A1F85832BC}.Release|Win32.Build.0 = Release|Win32
+		{743704EC-78EE-483F-93B1-853E25E76892}.Debug|Win32.ActiveCfg = Debug|Win32
+		{743704EC-78EE-483F-93B1-853E25E76892}.Debug|Win32.Build.0 = Debug|Win32
+		{743704EC-78EE-483F-93B1-853E25E76892}.Release|Win32.ActiveCfg = Release|Win32
+		{743704EC-78EE-483F-93B1-853E25E76892}.Release|Win32.Build.0 = Release|Win32
+		{040A9EB0-0698-4820-9FFA-8D4017D2EFD3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{040A9EB0-0698-4820-9FFA-8D4017D2EFD3}.Debug|Win32.Build.0 = Debug|Win32
+		{040A9EB0-0698-4820-9FFA-8D4017D2EFD3}.Release|Win32.ActiveCfg = Release|Win32
+		{040A9EB0-0698-4820-9FFA-8D4017D2EFD3}.Release|Win32.Build.0 = Release|Win32
+		{55AB20B3-1B5A-4CF4-9EF3-77BC7739B6F8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{55AB20B3-1B5A-4CF4-9EF3-77BC7739B6F8}.Debug|Win32.Build.0 = Debug|Win32
+		{55AB20B3-1B5A-4CF4-9EF3-77BC7739B6F8}.Release|Win32.ActiveCfg = Release|Win32
+		{55AB20B3-1B5A-4CF4-9EF3-77BC7739B6F8}.Release|Win32.Build.0 = Release|Win32
+		{D56CD35F-349D-40E8-9E04-393707696B67}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D56CD35F-349D-40E8-9E04-393707696B67}.Debug|Win32.Build.0 = Debug|Win32
+		{D56CD35F-349D-40E8-9E04-393707696B67}.Release|Win32.ActiveCfg = Release|Win32
+		{D56CD35F-349D-40E8-9E04-393707696B67}.Release|Win32.Build.0 = Release|Win32
+		{F7938A52-5756-4653-8D73-46423CA3FB2A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F7938A52-5756-4653-8D73-46423CA3FB2A}.Debug|Win32.Build.0 = Debug|Win32
+		{F7938A52-5756-4653-8D73-46423CA3FB2A}.Release|Win32.ActiveCfg = Release|Win32
+		{F7938A52-5756-4653-8D73-46423CA3FB2A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>697</width>
+    <height>462</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTreeWidget" name="treeWidget">
+     <column>
+      <property name="text">
+       <string>name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>parameter</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>introduction</string>
+      </property>
+     </column>
+     <item>
+      <property name="text">
+       <string>offsetAddress</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="text">
+       <string>用于function的几个页面的fram加偏移地址</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>axis0</string>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>axis1</string>
+       </property>
+       <property name="text">
+        <string>32768</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>axis2</string>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>axis3</string>
+       </property>
+       <property name="text">
+        <string>32768</string>
+       </property>
+      </item>
+     </item>
+     <item>
+      <property name="text">
+       <string>device</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="text">
+       <string>用于DSP下载控制</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>dsp</string>
+       </property>
+       <property name="text">
+        <string>2</string>
+       </property>
+       <property name="text">
+        <string>total number</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>dspAxis</string>
+        </property>
+        <property name="text">
+         <string>2</string>
+        </property>
+       </item>
+      </item>
+      <item>
+       <property name="text">
+        <string>fpga</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+       <property name="text">
+        <string>total number</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>fpgaAxis</string>
+        </property>
+        <property name="text">
+         <string>4</string>
+        </property>
+       </item>
+      </item>
+     </item>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

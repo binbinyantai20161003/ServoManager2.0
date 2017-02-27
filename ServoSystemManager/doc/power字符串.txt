@@ -1,0 +1,11 @@
+vdc_ulim_2 : 母线电压上限
+vdc_llim_2 : 母线电压下限
+
+bk_ulim_2 : 制动电压上限
+bk_llim_2 : 制动电压下限
+
+soft_on_thd_2 : 软启动电压上限
+soft_off_thd_2 : 软启动电压下限
+
+
+上述单位都是电压单位 （V）

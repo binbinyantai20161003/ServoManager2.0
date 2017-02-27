@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="StringHandler">
+      <UniqueIdentifier>{09c3c486-c07e-4955-ab3b-1978ce1682c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FindFile">
+      <UniqueIdentifier>{92299d5b-1649-482a-a062-f9a621037897}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FindFile\include">
+      <UniqueIdentifier>{7ac3b9ab-5b2e-4791-900d-178ea1a8d420}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FindFile\src">
+      <UniqueIdentifier>{195b73ac-89cb-47a3-8fe2-42a6897ad36f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StringHandler\include">
+      <UniqueIdentifier>{65784931-0d89-44bd-a409-c6d0a0d64614}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StringHandler\src">
+      <UniqueIdentifier>{d6cc980c-2264-4dc2-8c8f-8c6b46b2cbeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ParseFile">
+      <UniqueIdentifier>{b1fd4afa-2de7-4543-9c34-5d86ae3e0f25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ParseFile\include">
+      <UniqueIdentifier>{63e14c25-9e2d-42fb-a1b6-bbe007aa79db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ParseFile\src">
+      <UniqueIdentifier>{90212914-3d30-4751-9bf8-77ce7d0feed3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BuildVarRelation">
+      <UniqueIdentifier>{652a47d6-32ae-46ed-960e-3ffa9155ba55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BuildVarRelation\include">
+      <UniqueIdentifier>{3fdecbc1-bb43-4d53-a371-4d5e54bd3e66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BuildVarRelation\src">
+      <UniqueIdentifier>{8581791e-d62a-4c10-9420-ae577ab01b09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BuildPrmRelation">
+      <UniqueIdentifier>{f0e51af3-2336-46ff-a850-38dafdc0bb6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BuildPrmRelation\include">
+      <UniqueIdentifier>{fef63194-6f29-4c77-b568-6d6cb838ef54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BuildPrmRelation\src">
+      <UniqueIdentifier>{2011ca22-26b3-45b8-b2c7-433926c8dd02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xml">
+      <UniqueIdentifier>{726c38d2-025d-4a1e-b1db-aedd15f981d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xml\include">
+      <UniqueIdentifier>{fd9a548e-ed74-4c9c-b1f1-b24c919b9f17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xml\src">
+      <UniqueIdentifier>{bb41a74f-d9f8-4d49-8a98-a3b5a357ad1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PrtyCompare">
+      <UniqueIdentifier>{37800696-86f4-4e95-83fd-c1a9be51cfc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PrtyCompare\include">
+      <UniqueIdentifier>{2bf43d5d-73a2-4bee-9f59-804c7eecf5ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PrtyCompare\src">
+      <UniqueIdentifier>{e2aead7f-ae66-4882-b3b9-b62df9b3ef99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PrmCompare">
+      <UniqueIdentifier>{6bb25d4a-5aa9-4627-a47e-4928b30879bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PrmCompare\include">
+      <UniqueIdentifier>{5fbb7beb-94ce-46ef-b6ce-5fbf3b6d0e1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PrmCompare\src">
+      <UniqueIdentifier>{cac37aa4-5e6d-438b-86b0-f99ae79c055d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IniFileHandler">
+      <UniqueIdentifier>{95b447d4-bd0d-4554-8edf-f3688b6b5ada}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IniFileHandler\include">
+      <UniqueIdentifier>{3e2d03f4-af72-4665-b2ad-bace04aed4df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IniFileHandler\src">
+      <UniqueIdentifier>{ec56352a-f8e6-437a-9536-87faf700226b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ServoDriverManagerDll.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FindFile\include\FindDirectoryFile.h">
+      <Filter>FindFile\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Basetype_def.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StringHandler\include\StringHandler.h">
+      <Filter>StringHandler\include</Filter>
+    </ClInclude>
+    <ClInclude Include="ParseFile\include\ParseFile.h">
+      <Filter>ParseFile\include</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildVarRelation\include\BuildVarRelation.h">
+      <Filter>BuildVarRelation\include</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildPrmRelation\include\BuildPrmRelation.h">
+      <Filter>BuildPrmRelation\include</Filter>
+    </ClInclude>
+    <ClInclude Include="xml\include\tinystr.h">
+      <Filter>xml\include</Filter>
+    </ClInclude>
+    <ClInclude Include="xml\include\tinyxml.h">
+      <Filter>xml\include</Filter>
+    </ClInclude>
+    <ClInclude Include="xml\include\xml.h">
+      <Filter>xml\include</Filter>
+    </ClInclude>
+    <ClInclude Include="PrtyCompare\include\PrtyCompare.h">
+      <Filter>PrtyCompare\include</Filter>
+    </ClInclude>
+    <ClInclude Include="PrmCompare\include\PrmCompare.h">
+      <Filter>PrmCompare\include</Filter>
+    </ClInclude>
+    <ClInclude Include="IniFileHandler\include\IniFileHandler.h">
+      <Filter>IniFileHandler\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ServoDriverManagerDll.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FindFile\src\FindDirectoryFile.cpp">
+      <Filter>FindFile\src</Filter>
+    </ClCompile>
+    <ClCompile Include="StringHandler\src\StringHandler.cpp">
+      <Filter>StringHandler\src</Filter>
+    </ClCompile>
+    <ClCompile Include="ParseFile\src\ParseFile.cpp">
+      <Filter>ParseFile\src</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildVarRelation\src\BuildVarRelation.cpp">
+      <Filter>BuildVarRelation\src</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildPrmRelation\src\BuildPrmRelation.cpp">
+      <Filter>BuildPrmRelation\src</Filter>
+    </ClCompile>
+    <ClCompile Include="xml\src\tinystr.cpp">
+      <Filter>xml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="xml\src\tinyxml.cpp">
+      <Filter>xml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="xml\src\tinyxmlerror.cpp">
+      <Filter>xml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="xml\src\tinyxmlparser.cpp">
+      <Filter>xml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="xml\src\xml.cpp">
+      <Filter>xml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="PrtyCompare\src\PrtyCompare.cpp">
+      <Filter>PrtyCompare\src</Filter>
+    </ClCompile>
+    <ClCompile Include="PrmCompare\src\PrmCompare.cpp">
+      <Filter>PrmCompare\src</Filter>
+    </ClCompile>
+    <ClCompile Include="IniFileHandler\src\IniFileHandler.cpp">
+      <Filter>IniFileHandler\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

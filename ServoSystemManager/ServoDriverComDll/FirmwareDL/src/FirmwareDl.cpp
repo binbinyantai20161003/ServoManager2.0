@@ -40,9 +40,23 @@ int16 CFirmwareDL::ResetVar()
 int16 CFirmwareDL::SetRemoteUpdataStartbit(int16 com_type, int16 stationId)
 {
 	int16 data		= 1; //bit0置1
-	int16 com_addr	= REMOTE_FPGA_CTL;
-	int16 base_addr = FPGA_DSPA_BASEADDR;	
-	int16 comAddr	= base_addr + (com_addr);
+	int16 com_addr;
+	int16 base_addr;	
+	int16 comAddr;
+
+	if (com_type == GTSD_COM_TYPE_NET)
+	{
+		com_addr = REMOTE_FPGA_CTL;
+		base_addr = FPGA_DSPA_BASEADDR;
+		comAddr = base_addr + (com_addr);
+	}
+	else if (com_type == GTSD_COM_TYPE_RNNET)
+	{
+		com_addr = RN_REMOTE_FPGA_CTL;
+		base_addr = FPGA_RN_RMT_START_OFST;
+		comAddr = base_addr + (com_addr);
+	}
+
 	int16 Data		= data;
 	int16 comNum	= 1;
 	int16 rtn		= g_AbsCom->GTSD_Com_Firmware_handler(com_type, GTSD_COM_MODE_WRITE, comAddr, &Data, comNum, stationId);
@@ -55,9 +69,22 @@ int16 CFirmwareDL::CheckRemoteUpdataState(int16 com_type, int16 stationId,int32 
 	//检查命令是否完成
 	int16 iRet;
 	int16 data;	
-	int16 com_addr	= REMOTE_FPGA_CTL;
-	int16 base_addr = FPGA_DSPA_BASEADDR;
-	int16 comAddr	= base_addr + (com_addr);
+	int16 com_addr;
+	int16 base_addr;
+	int16 comAddr;
+
+	if (com_type == GTSD_COM_TYPE_NET)
+	{
+		com_addr	= REMOTE_FPGA_CTL;
+		base_addr	= FPGA_DSPA_BASEADDR;
+		comAddr		= base_addr + (com_addr);
+	}
+	else if (com_type == GTSD_COM_TYPE_RNNET)
+	{
+		com_addr	= RN_REMOTE_FPGA_CTL;
+		base_addr	= FPGA_RN_RMT_START_OFST;
+		comAddr		= base_addr + (com_addr);
+	}
 	int16 comNum	= 1;
 	bool bSuccess	= false;
 	
@@ -117,9 +144,22 @@ int16 CFirmwareDL::SetRemoteUpdataReadRequest(int16 com_type,Uint32 flash_addr, 
 
 
 
-	int16 com_addr			= REMOTE_FPGA_DATA_START;
-	int16 base_addr			= FPGA_DSPA_BASEADDR;
-	int16 comAddr			= base_addr + (com_addr);
+	int16 com_addr;
+	int16 base_addr;
+	int16 comAddr;
+
+	if (com_type == GTSD_COM_TYPE_NET)
+	{
+		com_addr = REMOTE_FPGA_DATA_START;
+		base_addr = FPGA_DSPA_BASEADDR;
+		comAddr = base_addr + (com_addr);
+	}
+	else if (com_type == GTSD_COM_TYPE_RNNET)
+	{
+		com_addr = RN_REMOTE_FPGA_DATA_START;
+		base_addr = FPGA_RN_RMT_START_OFST;
+		comAddr = base_addr + (com_addr);
+	}
 	int16 comNum			= 3;
 
 	iRet = g_AbsCom->GTSD_Com_Firmware_handler(com_type, GTSD_COM_MODE_WRITE, comAddr, (int16*)(data), comNum, stationId); //写入读取命令
@@ -146,9 +186,22 @@ int16 CFirmwareDL::ProtectOff(int16 com_type, int16 stationId)
 {
 	int16 iRet;
 	Uint8 data[20]			= {0};
-	int16 com_addr			= REMOTE_FPGA_DATA_START;
-	int16 base_addr			= FPGA_DSPA_BASEADDR;
-	int16 comAddr			= base_addr + (com_addr);
+	int16 com_addr;
+	int16 base_addr;
+	int16 comAddr;
+
+	if (com_type == GTSD_COM_TYPE_NET)
+	{
+		com_addr = REMOTE_FPGA_DATA_START;
+		base_addr = FPGA_DSPA_BASEADDR;
+		comAddr = base_addr + (com_addr);
+	}
+	else if (com_type == GTSD_COM_TYPE_RNNET)
+	{
+		com_addr = RN_REMOTE_FPGA_DATA_START;
+		base_addr = FPGA_RN_RMT_START_OFST;
+		comAddr = base_addr + (com_addr);
+	}
 	int16 comNum			= 3;
 	data[0]					= CMD_PRET_OFF;					//命令
 	data[4]					= 1;							//lenth写1
@@ -176,9 +229,22 @@ int16 CFirmwareDL::ProtectOn(int16 com_type, int16 stationId)
 {
 	int16 iRet;
 	Uint8 data[20]		= { 0 };
-	int16 com_addr		= REMOTE_FPGA_DATA_START;
-	int16 base_addr		= FPGA_DSPA_BASEADDR;
-	int16 comAddr		= base_addr + (com_addr);
+	int16 com_addr;
+	int16 base_addr;
+	int16 comAddr;
+
+	if (com_type == GTSD_COM_TYPE_NET)
+	{
+		com_addr = REMOTE_FPGA_DATA_START;
+		base_addr = FPGA_DSPA_BASEADDR;
+		comAddr = base_addr + (com_addr);
+	}
+	else if (com_type == GTSD_COM_TYPE_RNNET)
+	{
+		com_addr = RN_REMOTE_FPGA_DATA_START;
+		base_addr = FPGA_RN_RMT_START_OFST;
+		comAddr = base_addr + (com_addr);
+	}
 	int16 comNum		= 3;
 	data[0]				= CMD_PRET_ON;					//命令
 	data[4]				= 1;							//lenth写1
@@ -207,9 +273,22 @@ int16 CFirmwareDL::EraseData(int16 com_type, int16 stationId)
 	
 	int16 iRet;
 	Uint8 data[20]		= { 0 };
-	int16 com_addr		= REMOTE_FPGA_DATA_START;
-	int16 base_addr		= FPGA_DSPA_BASEADDR;
-	int16 comAddr		= base_addr + (com_addr);
+	int16 com_addr;
+	int16 base_addr;
+	int16 comAddr;
+
+	if (com_type == GTSD_COM_TYPE_NET)
+	{
+		com_addr = REMOTE_FPGA_DATA_START;
+		base_addr = FPGA_DSPA_BASEADDR;
+		comAddr = base_addr + (com_addr);
+	}
+	else if (com_type == GTSD_COM_TYPE_RNNET)
+	{
+		com_addr = RN_REMOTE_FPGA_DATA_START;
+		base_addr = FPGA_RN_RMT_START_OFST;
+		comAddr = base_addr + (com_addr);
+	}
 	int16 comNum		= 3;
 	data[0]				= CMD_ERASE;					//命令
 	data[4]				= 1;							//lenth写1
@@ -244,9 +323,22 @@ int16 CFirmwareDL::GetFpgaFlashData(int16 com_type,Uint32 flash_addr, int16 *Get
 		return -1;
 	}
 
-	int16 com_addr		= REMOTE_FPGA_DATA_START;
-	int16 base_addr		= FPGA_DSPA_BASEADDR;
-	int16 comAddr		= base_addr + (com_addr)+3;
+	int16 com_addr;
+	int16 base_addr;
+	int16 comAddr;
+
+	if (com_type == GTSD_COM_TYPE_NET)
+	{
+		com_addr = REMOTE_FPGA_DATA_START;
+		base_addr = FPGA_DSPA_BASEADDR;
+		comAddr = base_addr + (com_addr)+3; //地址不同？
+	}
+	else if (com_type == GTSD_COM_TYPE_RNNET)
+	{
+		com_addr = RN_REMOTE_FPGA_DATA_START;
+		base_addr = FPGA_RN_RMT_START_OFST;
+		comAddr = base_addr + (com_addr)+6;
+	}
 	int16 comNum		= 1;
 
 	for (int16 i = 0; i < iLength; ++i)
@@ -290,9 +382,22 @@ int16 CFirmwareDL::SendFpgaFlashData(int16 com_type,Uint32 flash_addr, int16 *Se
 	//将数据放到buffer中从6开始
 	memcpy_s(&data[6], iLength*sizeof(Uint16),Sendbuf, iLength*sizeof(Uint16));
 
-	int16 com_addr		= REMOTE_FPGA_DATA_START;
-	int16 base_addr		= FPGA_DSPA_BASEADDR;
-	int16 comAddr		= base_addr + (com_addr);
+	int16 com_addr;
+	int16 base_addr;
+	int16 comAddr;
+
+	if (com_type == GTSD_COM_TYPE_NET)
+	{
+		com_addr = REMOTE_FPGA_DATA_START;
+		base_addr = FPGA_DSPA_BASEADDR;
+		comAddr = base_addr + (com_addr);
+	}
+	else if (com_type == GTSD_COM_TYPE_RNNET)
+	{
+		com_addr = RN_REMOTE_FPGA_DATA_START;
+		base_addr = FPGA_RN_RMT_START_OFST;
+		comAddr = base_addr + (com_addr);
+	}
 	int16 comNum		= 1;
 
 	for (int16 i = 0; i < iLength + 3;++i)

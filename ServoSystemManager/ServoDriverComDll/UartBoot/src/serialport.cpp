@@ -108,13 +108,34 @@ bool SerialCtl::open(int16 axis, int32 baudRate, int16 com_type, int16 stationId
 		return Net_Rt_param_Err;
 	}
 	//计算实际的地址
-	int16 comAddr	= base_addr + (com_addr>>1);
-	int16 comAddr1	= base_addr + (com_addr1 >> 1);
-	int16 comAddr2	= base_addr + (com_addr2 >> 1);
-	int16 comAddr3	= base_addr + (com_addr3 >> 1);
+	int16 comAddr;
+	int16 comAddr1;
+	int16 comAddr2;
+	int16 comAddr3;
+	int16 comNum;
+	if (com_type == GTSD_COM_TYPE_NET)
+	{
+		//short地址
+		//计算实际的地址
+		comAddr = base_addr + (com_addr >> 1);
+		comAddr1 = base_addr + (com_addr1 >> 1);
+		comAddr2 = base_addr + (com_addr2 >> 1);
+		comAddr3 = base_addr + (com_addr3 >> 1);
+		comNum = 1;
+	}
+	else if (com_type == GTSD_COM_TYPE_RNNET)
+	{
+		//byte地址
+		//计算实际的地址
+		comAddr		= base_addr + (com_addr);
+		comAddr1	= base_addr + (com_addr1);
+		comAddr2	= base_addr + (com_addr2);
+		comAddr3	= base_addr + (com_addr3);
+		comNum =  1;
+	}
+	
 	//----------------------------------------------------------------------------
 	//打开模块
-	int16 comNum		= 1;
 	int16 startValue	= (int16)0xFF00; //写该值打开该模块
 	int16 rtn			= g_AbsCom->GTSD_Com_Firmware_handler(com_type, GTSD_COM_MODE_WRITE, comAddr2, &startValue, comNum, stationId);
 	if (rtn != GTSD_COM_SUCCESS)
@@ -205,22 +226,62 @@ bool SerialCtl::close(int16 axis, int16 com_type, int16 stationId)
 		int16 base_addr;
 		if (dsp_number == GTSD_DSP_A)
 		{
-			base_addr = (int16)FPGA_DSPA_UART_PCDEBUG_BASEADDR;
+			if (com_type == GTSD_COM_TYPE_NET)
+			{
+				base_addr = (int16)FPGA_DSPA_UART_PCDEBUG_BASEADDR;
+			}
+			else if (com_type == GTSD_COM_TYPE_RNNET)
+			{
+				base_addr = (int16)FPGA_DSPA_UART_RNNET_BASEADDR;
+			}
+			else
+			{
+				base_addr = (int16)FPGA_DSPA_UART_RNNET_BASEADDR;
+			}
+
 		}
 		else if (dsp_number == GTSD_DSP_B)
 		{
-			base_addr = (int16)FPGA_DSPB_UART_PCDEBUG_BASEADDR;
+			if (com_type == GTSD_COM_TYPE_NET)
+			{
+				base_addr = (int16)FPGA_DSPB_UART_PCDEBUG_BASEADDR;
+			}
+			else if (com_type == GTSD_COM_TYPE_RNNET)
+			{
+				base_addr = (int16)FPGA_DSPB_UART_RNNET_BASEADDR;
+			}
+			else
+			{
+				base_addr = (int16)FPGA_DSPB_UART_RNNET_BASEADDR;
+			}
 		}
 		else
 		{
 			return Net_Rt_param_Err;
 		}
 		//计算实际的地址
-		int16 comAddr	= base_addr + (com_addr >> 1);
-		int16 comAddr1	= base_addr + (com_addr1 >> 1);
+		int16 comAddr;
+		int16 comAddr1;
+		int16 comNum;
+		if (com_type == GTSD_COM_TYPE_NET)
+		{
+			//short地址
+			//计算实际的地址
+			comAddr = base_addr + (com_addr >> 1);
+			comAddr1 = base_addr + (com_addr1 >> 1);
+			comNum = 1;
+		}
+		else if (com_type == GTSD_COM_TYPE_RNNET)
+		{
+			//byte地址
+			//计算实际的地址
+			comAddr = base_addr + (com_addr);
+			comAddr1 = base_addr + (com_addr1);
+			comNum = 1;
+		}
+
 		//----------------------------------------------------------------------------
 		//关闭模块
-		int16 comNum = 1;
 		int16 stopValue = 0x0000; //写该值关闭该模块
 		int16 rtn = g_AbsCom->GTSD_Com_Firmware_handler(com_type, GTSD_COM_MODE_WRITE, comAddr, &stopValue, comNum, stationId);
 		if (rtn != GTSD_COM_SUCCESS)
@@ -268,22 +329,61 @@ bool SerialCtl::read(int16 axis,Uint8 *buf, int32 length, int32 *length_read, in
 		int16 base_addr;
 		if (dsp_number == GTSD_DSP_A)
 		{
-			base_addr = (int16)FPGA_DSPA_UART_PCDEBUG_BASEADDR;
+			if (com_type == GTSD_COM_TYPE_NET)
+			{
+				base_addr = (int16)FPGA_DSPA_UART_PCDEBUG_BASEADDR;
+			}
+			else if (com_type == GTSD_COM_TYPE_RNNET)
+			{
+				base_addr = (int16)FPGA_DSPA_UART_RNNET_BASEADDR;
+			}
+			else
+			{
+				base_addr = (int16)FPGA_DSPA_UART_RNNET_BASEADDR;
+			}
+
 		}
 		else if (dsp_number == GTSD_DSP_B)
 		{
-			base_addr = (int16)FPGA_DSPB_UART_PCDEBUG_BASEADDR;
+			if (com_type == GTSD_COM_TYPE_NET)
+			{
+				base_addr = (int16)FPGA_DSPB_UART_PCDEBUG_BASEADDR;
+			}
+			else if (com_type == GTSD_COM_TYPE_RNNET)
+			{
+				base_addr = (int16)FPGA_DSPB_UART_RNNET_BASEADDR;
+			}
+			else
+			{
+				base_addr = (int16)FPGA_DSPB_UART_RNNET_BASEADDR;
+			}
 		}
 		else
 		{
 			return Net_Rt_param_Err;
 		}
 		//计算实际的地址
-		int16 comAddr = base_addr + (com_addr >> 1);
-		int16 comAddr1 = base_addr + (com_addr1 >> 1);
+		int16 comAddr;
+		int16 comAddr1;
+		int16 comNum;
+		if (com_type == GTSD_COM_TYPE_NET)
+		{
+			//short地址
+			//计算实际的地址
+			comAddr = base_addr + (com_addr >> 1);
+			comAddr1 = base_addr + (com_addr1 >> 1);
+			comNum = 1;
+		}
+		else if (com_type == GTSD_COM_TYPE_RNNET)
+		{
+			//byte地址
+			//计算实际的地址
+			comAddr = base_addr + (com_addr);
+			comAddr1 = base_addr + (com_addr1);
+			comNum = 1;
+		}
 		//----------------------------------------------------------------------------
 		//查询RX状态
-		int16 comNum = 1;
 		int16 stateValue = 0x0000;
 		int16 rtn;
 		//----------------------------------------------------------------------------
@@ -352,23 +452,64 @@ bool SerialCtl::write(int16 axis,Uint8 *buf, int32 length, int32 *length_written
 		int16 base_addr;
 		if (dsp_number == GTSD_DSP_A)
 		{
-			base_addr = (int16)FPGA_DSPA_UART_PCDEBUG_BASEADDR;
+			if (com_type == GTSD_COM_TYPE_NET)
+			{
+				base_addr = (int16)FPGA_DSPA_UART_PCDEBUG_BASEADDR;
+			}
+			else if (com_type == GTSD_COM_TYPE_RNNET)
+			{
+				base_addr = (int16)FPGA_DSPA_UART_RNNET_BASEADDR;
+			}
+			else
+			{
+				base_addr = (int16)FPGA_DSPA_UART_RNNET_BASEADDR;
+			}
+
 		}
 		else if (dsp_number == GTSD_DSP_B)
 		{
-			base_addr = (int16)FPGA_DSPB_UART_PCDEBUG_BASEADDR;
+			if (com_type == GTSD_COM_TYPE_NET)
+			{
+				base_addr = (int16)FPGA_DSPB_UART_PCDEBUG_BASEADDR;
+			}
+			else if (com_type == GTSD_COM_TYPE_RNNET)
+			{
+				base_addr = (int16)FPGA_DSPB_UART_RNNET_BASEADDR;
+			}
+			else
+			{
+				base_addr = (int16)FPGA_DSPB_UART_RNNET_BASEADDR;
+			}
 		}
 		else
 		{
 			return Net_Rt_param_Err;
 		}
 		//计算实际的地址
-		int16 comAddr = base_addr + (com_addr >> 1);
-		int16 comAddr1 = base_addr + (com_addr1 >> 1);
-		int16 comAddr2 = base_addr + (com_addr2 >> 1);
+		int16 comAddr;
+		int16 comAddr1;
+		int16 comAddr2;
+		int16 comNum;
+		if (com_type == GTSD_COM_TYPE_NET)
+		{
+			//short地址
+			//计算实际的地址
+			comAddr = base_addr + (com_addr >> 1);
+			comAddr1 = base_addr + (com_addr1 >> 1);
+			comAddr2 = base_addr + (com_addr2 >> 1);
+			comNum = 1;
+		}
+		else if (com_type == GTSD_COM_TYPE_RNNET)
+		{
+			//byte地址
+			//计算实际的地址
+			comAddr = base_addr + (com_addr);
+			comAddr1 = base_addr + (com_addr1);
+			comAddr2 = base_addr + (com_addr2);
+			comNum = 1;
+		}
 		//----------------------------------------------------------------------------
 		//查询RTS状态
-		int16 comNum = 1;
 		int16 stateValue = 0x0000; 
 		int16 counter = 0;
 		int16 rtn;

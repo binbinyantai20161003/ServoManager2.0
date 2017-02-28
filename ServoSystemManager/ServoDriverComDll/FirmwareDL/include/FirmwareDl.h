@@ -32,9 +32,16 @@ public:
 	static const int32		CMD_PRET_OFF	= 3;
 	static const int32		CMD_ERASE		= 4;
 
+	//pcdebug偏移地址，基地址是0
 	static const Uint16		REMOTE_FPGA_CTL			= 0x37F;
 	static const Uint16		REMOTE_FPGA_DATA_START	= 0x300;
 	static const Uint16		REMOTE_FPGA_DATA_END	= 0x37C;
+
+	//等环网偏移地址
+	static const Uint16		RN_REMOTE_FPGA_CTL = (0x7F*2);
+	static const Uint16		RN_REMOTE_FPGA_DATA_START = (0x00);
+	static const Uint16		RN_REMOTE_FPGA_DATA_END = (0x7C*2);
+
 
 	Uint32 m_byte_write;
 

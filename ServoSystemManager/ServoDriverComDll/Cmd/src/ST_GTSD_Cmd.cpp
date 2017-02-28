@@ -2657,7 +2657,7 @@ int16 GTSD_CMD_ST_Set16bitFPGAByAddr(int16 dsp_number, int16 com_addr, int16 val
 			//公用的dspnumber 可以都写为0，因为没有用到，实际上传入的偏移已经是绝对地址了。
 			comAddr = (com_addr);
 		}
-		comNum = 2;
+		comNum = 1;
 	}
 	
 	int16 Data = value;
@@ -2730,7 +2730,7 @@ int16 GTSD_CMD_ST_Get16bitFPGAByAddr(int16 dsp_number, int16 com_addr, int16* pv
 			//公用的dspnumber 可以都写为0，因为没有用到，实际上传入的偏移已经是绝对地址了。
 			comAddr = (com_addr);
 		}
-		comNum = 2;
+		comNum = 1;
 	}
 	int16 rtn = g_AbsCom->GTSD_Com_Firmware_handler(com_type, GTSD_COM_MODE_READ, comAddr, pvalue, comNum, stationId);
 	if (rtn != GTSD_COM_SUCCESS)
@@ -2801,7 +2801,7 @@ int16 GTSD_CMD_ST_Set32bitFPGAByAddr(int16 dsp_number, int16 com_addr, int32 val
 			//公用的dspnumber 可以都写为0，因为没有用到，实际上传入的偏移已经是绝对地址了。
 			comAddr = (com_addr);
 		}
-		comNum = 2;
+		comNum = 1;
 	}
 	int32 Data = value;
 	int16 high = ((Data >> 16) & 0xffff);
@@ -2894,7 +2894,7 @@ int16 GTSD_CMD_ST_Get32bitFPGAByAddr(int16 dsp_number, int16 com_addr, int32* pv
 			//公用的dspnumber 可以都写为0，因为没有用到，实际上传入的偏移已经是绝对地址了。
 			comAddr = (com_addr);
 		}
-		comNum = 2;
+		comNum = 1;
 	}
 	int16 high;
 	int16 low;

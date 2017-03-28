@@ -42,7 +42,11 @@ typedef struct axis_addr_ofst
 }AXIS_ADDR_OFST;
 
 //////////////////////////////////////////////////////////////////////////
-
+typedef struct user_wave
+{
+	wstring englishName;
+	wstring chineseName;
+}USER_WAVE;
 
 class CBuildVarRelation
 {
@@ -82,11 +86,15 @@ public:
 	int16 FindVarLevelNum(int16 sAxisNum);
 	int16 SplitVarLevel(int16 level, int16 sAxisNum);
 
+	//用户曲线获取
+	int16 GetUserWave(list<VARST>* var, list<VARST>* varAxis);
+	list<VARST>* UserWavelist; //用于存储用户曲线
+	list<VARST>* UserWavelistAxis;
+	map<bool, USER_WAVE> userWaveMap;
+
 	//用于存储树状分层的
 	list<VARST>* VarStLevelList;
 	list<VARST>** VarStLevelListAxis;
-
-
 };
 extern CBuildVarRelation* g_buildVarRelation;
 #endif

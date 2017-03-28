@@ -286,6 +286,7 @@ typedef enum
 #define MALLOC(x) HeapAlloc(GetProcessHeap(), 0, (x))
 #define FREE(x) HeapFree(GetProcessHeap(), 0, (x))
 extern wstring NetCardName;//用于存储网卡描述信息
+extern wstring NetCardNum;
 //返回0 ：速度为千兆
 //返回1：函数内部地址分配错误
 //返回2：速度不是千兆

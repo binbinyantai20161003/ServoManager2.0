@@ -14,8 +14,8 @@
 #define DRIVER_CMD_RN		2
 
 
-#define  CURRENT_TEST   DRIVER_CMD_RN
-//#define  CURRENT_TEST   DRIVER_CMD
+//#define  CURRENT_TEST   DRIVER_CMD_RN
+#define  CURRENT_TEST   DRIVER_CMD
 //#define  CURRENT_TEST   DRIVER_MANAGER
 	GENERALFUNCTION func;
 //////////////////////////////////////////////////////////////////////////
@@ -91,7 +91,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 #if(CURRENT_TEST == DRIVER_CMD)
 	int16 rtn;
-	rtn = GTSD_CMD_Open(UpdataProgressPt, ptr, GTSD_COM_TYPE_RNNET);
+	rtn = GTSD_CMD_Open(UpdataProgressPt, ptr, GTSD_COM_TYPE_NET);
 	if (rtn != 0)
 	{
 		return -1;

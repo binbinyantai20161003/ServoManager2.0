@@ -400,15 +400,33 @@ int16 CFirmwareDL::SendFpgaFlashData(int16 com_type,Uint32 flash_addr, int16 *Se
 	}
 	int16 comNum		= 1;
 
-	for (int16 i = 0; i < iLength + 3;++i)
+	//for (int16 i = 0; i < iLength + 3;++i)
+	//{
+	//	//向里面压数据
+	//	iRet = g_AbsCom->GTSD_Com_Firmware_handler(com_type, GTSD_COM_MODE_WRITE, comAddr, (int16*)(&data[i*2]), comNum, stationId);
+	//	if (0 != iRet)
+	//	{
+	//		return -1;
+	//	}
+	//	if (com_type == GTSD_COM_TYPE_NET)
+	//	{
+	//		//short地址
+	//		comAddr++;
+	//	}
+	//	else if (com_type == GTSD_COM_TYPE_RNNET)
+	//	{
+	//		//byte地址
+	//		comAddr += 2;
+	//	}
+
+	//}
+
+	//提高效率，一次写200byte+6byte包头
+	//向里面压数据
+	iRet = g_AbsCom->GTSD_Com_Firmware_handler(com_type, GTSD_COM_MODE_WRITE, comAddr, (int16*)(&data[0]), (iLength + 3), stationId);
+	if (0 != iRet)
 	{
-		//向里面压数据
-		iRet = g_AbsCom->GTSD_Com_Firmware_handler(com_type, GTSD_COM_MODE_WRITE, comAddr, (int16*)(&data[i*2]), comNum, stationId);
-		if (0 != iRet)
-		{
-			return -1;
-		}
-		comAddr++;
+		return -1;
 	}
 	
 
@@ -549,11 +567,12 @@ int16 CFirmwareDL::WriteFPGAFileToFlash(int16 com_type, string pFileName, void(*
 	}
 	file.close();
 
-	iRet = ProtectOn(com_type, stationId);//open写保护
-	if (iRet != 0)
-	{
-		return 6;
-	}
+	//屏蔽该部分，仿真器无法烧写。
+	//iRet = ProtectOn(com_type, stationId);//open写保护
+	//if (iRet != 0)
+	//{
+	//	return 6;
+	//}
 	return 0;
 }
 

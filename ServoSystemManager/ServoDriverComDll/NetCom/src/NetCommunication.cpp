@@ -15,6 +15,7 @@
 #include "BaseReturn_def.h"
 #include "NetCommunication.h"
 extern wstring NetCardName;
+extern wstring NetCardNum;
 
 //////////////////////////////////////////////////////////////////////////
 static const int32			FPGA_MODE_RD		= 0x0;							//FPGA读操作
@@ -194,6 +195,7 @@ int16 CNetCom::NC_Close()
 int16 CNetCom::NetCom_Open(void(*tpfUpdataProgressPt)(void*, int16*), void* ptrv, int16& progress)
 {
 	NetCardName = L"";
+	NetCardNum = L"";
 	void* ptr = ptrv;
 	int16 counter = 0;
 	int16 success_times = 0;
@@ -234,6 +236,7 @@ int16 CNetCom::NetCom_Open(void(*tpfUpdataProgressPt)(void*, int16*), void* ptrv
 				delete dBuf;
 				dBuf = NULL;
 				NetCardName = adapterList.at(i);
+				NetCardNum = adpNameList.at(i);
 				//百分比进度
 				progress = 100;
 				(*tpfUpdataProgressPt)(ptr, &progress);

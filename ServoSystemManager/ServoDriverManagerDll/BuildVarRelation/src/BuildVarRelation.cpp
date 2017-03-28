@@ -783,3 +783,13 @@ int16 CBuildVarRelation::SplitVarLevel(int16 level, int16 sAxisNum)
 
 	return 0;
 }
+
+int16 CBuildVarRelation::GetUserWave(list<VARST>* var, list<VARST>* varAxis)
+{
+	//bool isfind = false;
+	//USER_WAVE tmp;
+	//tmp.chineseName =
+	//tmp.englishName =
+	//userWaveMap.insert(make_pair(isfind, tmp));
+	return 0;
+}

@@ -11,6 +11,7 @@
 //--------------------------------------------------------------------------------------//
 //////////////////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
+#include <conio.h>
 #include "ST_GTSD_Cmd.h"
 #include "BaseReturn_def.h"
 #include "PlotWave.h"
@@ -25,6 +26,7 @@
 #include <ws2tcpip.h>
 
 wstring NetCardName = L"";
+wstring NetCardNum = L"";
 
 extern HANDLE GTSD_Event;
 
@@ -1278,10 +1280,11 @@ SERVODRIVERCOMDLL_API int16 GTSD_CMD_GetNetCardMsg(void)
 {
 	Uint32 dwSize = 0;
 	Uint32 dwRetVal = 0;
-	string tmp;
+	string tmp = "";
+	string tmpid = "";
 	Uint32 i, j;
 
-	if (NetCardName == L"")
+	if ((NetCardName == L"")||(NetCardNum == L""))
 	{
 		return 1;
 	}
@@ -1363,8 +1366,26 @@ SERVODRIVERCOMDLL_API int16 GTSD_CMD_GetNetCardMsg(void)
 
 			//判断网卡名字是否一致，一致再判断速度。
 			tmp = ((const char*)pIfRow->bDescr);
-			
-			if (ws2s(NetCardName) == tmp)
+			tmpid = ws2s(pIfRow->wszName);
+			//找到括号位置
+			int16 pos_start;
+			int16 pos_end;
+			string tmpValue;
+			string brace_start = "{";
+			string brace_end = "}";
+			pos_start = tmpid.find(brace_start.c_str());
+			pos_end = tmpid.find(brace_end.c_str());
+			//没找到括号
+			if ((pos_start == -1) || (pos_end == -1))
+			{
+				return 1;
+			}
+			else
+			{
+				tmpValue = tmpid.substr(pos_start + 1, pos_end - pos_start - 1);
+			}
+
+			if ((ws2s(NetCardName) == tmp) || (tmpValue == ws2s(NetCardNum)))
 			{
 				if (pIfRow->dwSpeed == 1000000000)
 				{
@@ -1431,4 +1452,188 @@ SERVODRIVERCOMDLL_API int16 GTSD_CMD_GetNetCardMsg(void)
 		pIfTable = NULL;
 	}
 	return 3;
+
+	//Uint32 dwSize = 0;
+	//Uint32 dwRetVal = 0;
+	//string tmp ="";
+	//string tmpid = "";
+	//Uint32 i, j;
+
+	////输出调试信息到控制台
+	//AllocConsole();
+
+	//if (NetCardName == L"")
+	//{
+	//	return 1;
+	//}
+
+	///* variables used for GetIfTable and GetIfEntry */
+	//MIB_IFTABLE *pIfTable;
+	//MIB_IFROW *pIfRow;
+
+	//// Allocate memory for our pointers.
+	//pIfTable = (MIB_IFTABLE *)MALLOC(sizeof(MIB_IFTABLE));
+	//if (pIfTable == NULL)
+	//{
+	//	_cprintf_s("Error allocating memory needed to call GetIfTable\n");
+	//	FreeConsole();
+	//	return 1;
+	//}
+	//// Make an initial call to GetIfTable to get the
+	//// necessary size into dwSize
+	//dwSize = sizeof(MIB_IFTABLE);
+	//if (GetIfTable(pIfTable, &dwSize, FALSE) == ERROR_INSUFFICIENT_BUFFER)
+	//{
+	//	FREE(pIfTable);
+	//	pIfTable = (MIB_IFTABLE *)MALLOC(dwSize);
+	//	if (pIfTable == NULL)
+	//	{
+	//		_cprintf_s("Error allocating memory needed to call GetIfTable\n");
+	//		FreeConsole();
+	//		return 1;
+	//	}
+	//}
+	//// Make a second call to GetIfTable to get the actual
+	//// data we want.
+	//if ((dwRetVal = GetIfTable(pIfTable, &dwSize, FALSE)) == NO_ERROR)
+	//{
+	//	_cprintf_s("\tNum Entries: %ld\n\n", pIfTable->dwNumEntries);
+	//	for (i = 0; i < pIfTable->dwNumEntries; i++)
+	//	{
+	//		pIfRow = (MIB_IFROW *)& pIfTable->table[i];
+	//		_cprintf_s("\tIndex[%d]:\t %ld\n", i, pIfRow->dwIndex);
+	//		_cprintf_s("\tInterfaceName[%d]:\t %ws", i, pIfRow->wszName);
+	//		_cprintf_s("\n");
+	//		_cprintf_s("\tDescription[%d]:\t ", i);
+	//		for (j = 0; j < pIfRow->dwDescrLen; j++)
+	//			_cprintf_s("%c", pIfRow->bDescr[j]);
+	//		_cprintf_s("\n");
+	//		_cprintf_s("\tType[%d]:\t ", i);
+	//		switch (pIfRow->dwType) {
+	//		case IF_TYPE_OTHER:
+	//			_cprintf_s("Other\n");
+	//			break;
+	//		case IF_TYPE_ETHERNET_CSMACD:
+	//			_cprintf_s("Ethernet\n");
+	//			break;
+	//		case IF_TYPE_ISO88025_TOKENRING:
+	//			_cprintf_s("Token Ring\n");
+	//			break;
+	//		case IF_TYPE_PPP:
+	//			_cprintf_s("PPP\n");
+	//			break;
+	//		case IF_TYPE_SOFTWARE_LOOPBACK:
+	//			_cprintf_s("Software Lookback\n");
+	//			break;
+	//		case IF_TYPE_ATM:
+	//			_cprintf_s("ATM\n");
+	//			break;
+	//		case IF_TYPE_IEEE80211:
+	//			_cprintf_s("IEEE 802.11 Wireless\n");
+	//			break;
+	//		case IF_TYPE_TUNNEL:
+	//			_cprintf_s("Tunnel type encapsulation\n");
+	//			break;
+	//		case IF_TYPE_IEEE1394:
+	//			_cprintf_s("IEEE 1394 Firewire\n");
+	//			break;
+	//		default:
+	//			_cprintf_s("Unknown type %ld\n", pIfRow->dwType);
+	//			break;
+	//		}
+	//		_cprintf_s("\tMtu[%d]:\t\t %ld\n", i, pIfRow->dwMtu);
+	//		_cprintf_s("\tSpeed[%d]:\t %ld\n", i, pIfRow->dwSpeed);
+
+	//		//判断网卡名字是否一致，一致再判断速度。
+	//		tmp = ((const char*)pIfRow->bDescr);
+	//		tmpid = ws2s(pIfRow->wszName);
+	//		//找到括号位置
+	//		int16 pos_start;
+	//		int16 pos_end;
+	//		string tmpValue;
+	//		string brace_start = "{";
+	//		string brace_end = "}";
+	//		pos_start = tmpid.find(brace_start.c_str());
+	//		pos_end = tmpid.find(brace_end.c_str());
+	//		//没找到括号
+	//		if ((pos_start == -1) || (pos_end == -1))
+	//		{
+	//			return 1;
+	//		}
+	//		else
+	//		{
+	//			tmpValue = tmpid.substr(pos_start + 1, pos_end - pos_start - 1);
+	//		}
+
+	//		if ((ws2s(NetCardName) == tmp) || (tmpValue == ws2s(NetCardNum)))
+	//		{
+	//			if (pIfRow->dwSpeed == 1000000000)
+	//			{
+	//				FreeConsole();
+	//				return Rt_Success;
+	//			}
+	//			else
+	//			{
+	//				FreeConsole();
+	//				return 2;
+	//			}
+	//		}
+
+	//		_cprintf_s("\tPhysical Addr:\t ");
+	//		if (pIfRow->dwPhysAddrLen == 0)
+	//			_cprintf_s("\n");
+	//		for (j = 0; j < pIfRow->dwPhysAddrLen; j++) {
+	//			if (j == (pIfRow->dwPhysAddrLen - 1))
+	//				_cprintf_s("%.2X\n", (int)pIfRow->bPhysAddr[j]);
+	//			else
+	//				_cprintf_s("%.2X-", (int)pIfRow->bPhysAddr[j]);
+	//		}
+	//		_cprintf_s("\tAdmin Status[%d]:\t %ld\n", i, pIfRow->dwAdminStatus);
+	//		_cprintf_s("\tOper Status[%d]:\t ", i);
+	//		switch (pIfRow->dwOperStatus) {
+	//		case IF_OPER_STATUS_NON_OPERATIONAL:
+	//			_cprintf_s("Non Operational\n");
+	//			break;
+	//		case IF_OPER_STATUS_UNREACHABLE:
+	//			_cprintf_s("Unreachable\n");
+	//			break;
+	//		case IF_OPER_STATUS_DISCONNECTED:
+	//			_cprintf_s("Disconnected\n");
+	//			break;
+	//		case IF_OPER_STATUS_CONNECTING:
+	//			_cprintf_s("Connecting\n");
+	//			break;
+	//		case IF_OPER_STATUS_CONNECTED:
+	//			_cprintf_s("Connected\n");
+	//			break;
+	//		case IF_OPER_STATUS_OPERATIONAL:
+	//			_cprintf_s("Operational\n");
+	//			break;
+	//		default:
+	//			_cprintf_s("Unknown status %ld\n", pIfRow->dwAdminStatus);
+	//			break;
+	//		}
+	//		_cprintf_s("\n");
+	//	}
+	//}
+	//else
+	//{
+	//	_cprintf_s("GetIfTable failed with error: \n", dwRetVal);
+	//	if (pIfTable != NULL)
+	//	{
+	//		FREE(pIfTable);
+	//		pIfTable = NULL;
+	//	}
+	//	FreeConsole();
+	//	return 1;
+	//	// Here you can use FormatMessage to find out why 
+	//	// it failed.
+	//}
+	//if (pIfTable != NULL)
+	//{
+	//	FREE(pIfTable);
+	//	pIfTable = NULL;
+	//}
+	//FreeConsole();
+	//return 3;
 }
